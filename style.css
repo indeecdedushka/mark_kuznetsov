@@ -1,7 +1,9 @@
 body {
     background-color: #BA55D3;
-    max-width: 900px;
+    width: 800px;
+    height: 800px;
     margin: 100;
+    border: 3px solid red;
     padding 30px;
 }
 /* Dropdown Button */
