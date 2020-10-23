@@ -4,7 +4,7 @@ body {
     max-width: 900px;
     margin: 10px auto;
     padding 30px;
-
+}
 /* Dropdown Button */
 .dropbtn {
     background-color: blueviolet;
@@ -51,5 +51,4 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
     background-color: #9370DB;
-}
 }
