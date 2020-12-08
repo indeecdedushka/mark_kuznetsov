@@ -11,7 +11,10 @@ footer{
     position: absolute;
     left: 0;
     bottom: 0;
-    vertical-align: top;
-    margin: 0;
-    padding: 0;
+    padding: 5px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
 }
