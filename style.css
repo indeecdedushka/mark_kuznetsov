@@ -11,4 +11,6 @@ footer{
     position: absolute;
     left: 0;
     bottom: 0;
+    vertical-align: top;
+    margin-top: 0;
 }
