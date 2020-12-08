@@ -1,0 +1,10 @@
+footer{
+    width: 100%;
+    height: auto;
+    background-color: darkviolet;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+    font-size: 14px;
+}
