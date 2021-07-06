@@ -2,12 +2,14 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 
 /**
  * @ORM\Entity
  */
-class Comment
+class Article
 {
     /**
      * @ORM\Id()
@@ -15,6 +17,11 @@ class Comment
      * @ORM\Column(type="integer")
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -29,7 +36,7 @@ class Comment
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $created;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -37,15 +44,34 @@ class Comment
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="comments")
-     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="article", cascade="remove")
+     * @OrderBy({"id" = "DESC"})
      */
-    private $article;
+    private $comments;
 
+    /**
+     * Article constructor.
+     */
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
     }
 
     public function getAuthor(): ?string
@@ -72,14 +98,14 @@ class Comment
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreated(): ?\DateTimeInterface
     {
-        return $this->created_at;
+        return $this->created;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreated(\DateTimeInterface $created): self
     {
-        $this->created_at = $created_at;
+        $this->created = $created;
 
         return $this;
     }
@@ -95,28 +121,38 @@ class Comment
 
         return $this;
     }
+
     /**
-     * Set article
+     * Add comment
      *
-     * @param \App\Entity\Article $article
+     * @param \App\Entity\Comment $comment
      *
-     * @return Comment
+     * @return Article
      */
-    public function setArticle(Article $article = null)
+    public function addComment(Comment $comment)
     {
-        $this->article = $article;
+        $this->comments[] = $comment;
 
         return $this;
     }
 
     /**
-     * Get article
+     * Remove comment
      *
-     * @return \App\Entity\Article
+     * @param \App\Entity\Comment $comment
      */
-    public function getArticle()
+    public function removeComment(Comment $comment)
     {
-        return $this->article;
+        $this->comments->removeElement($comment);
     }
 
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }
