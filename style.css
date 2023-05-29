@@ -85,6 +85,10 @@ div{
 
 }
 
+div p a{
+    color: #000;
+}
+
 .main{
     margin-top: 200px;
     width: 100%;
