@@ -61,7 +61,7 @@ header nav ul li a:hover{
 nav ul li ul{
   position: absolute;
   left:0;
-  width: 180px;
+  width: 250px;
   background: rgb(108, 11, 108);
   display: none;
 
@@ -70,6 +70,10 @@ nav ul li ul{
 nav ul li ul li{
     width: 100%;
     border: 1px solid rgba(0,0,0,.1);
+
+}
+nav ul li ul li a{
+    font-size: 11.5px;
 
 }
 
